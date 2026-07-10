@@ -71,41 +71,6 @@
   }
   @keyframes grad-flow{ 0%,100%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } }
 
-  /* ---------- PRELOADER ---------- */
-  #preloader{
-    position:fixed; inset:0; z-index:1000;
-    background:var(--bg);
-    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:22px;
-    transition:opacity .6s cubic-bezier(.16,1,.3,1), visibility .6s;
-  }
-  #preloader.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
-  .pre-mark{
-    position:relative; width:74px; height:74px; display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-weight:700; font-size:1.5rem;
-  }
-  .pre-mark svg{ position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg); }
-  .pre-mark circle{ fill:none; stroke-width:2.4; }
-  .pre-mark .track{ stroke:rgba(255,255,255,0.08); }
-  .pre-mark .bar{
-    stroke:url(#preGrad); stroke-linecap:round;
-    stroke-dasharray:207; stroke-dashoffset:207;
-    animation:pre-spin 1.15s cubic-bezier(.65,0,.35,1) infinite;
-  }
-  @keyframes pre-spin{
-    0%{ stroke-dashoffset:207; transform:rotate(0deg); }
-    50%{ stroke-dashoffset:52; }
-    100%{ stroke-dashoffset:207; transform:rotate(360deg); }
-  }
-  .pre-word{ font-family:var(--font-mono); font-size:.76rem; letter-spacing:.18em; color:var(--text-muted); text-transform:uppercase; }
-  .pre-word span{ display:inline-block; opacity:.25; animation:pre-flicker 1.4s ease-in-out infinite; }
-  @keyframes pre-flicker{ 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
-  .pre-bar-track{ width:180px; height:2px; border-radius:2px; background:rgba(255,255,255,0.08); overflow:hidden; }
-  .pre-bar-fill{ height:100%; width:0%; background:var(--grad); border-radius:2px; transition:width .25s ease-out; }
-  @media (prefers-reduced-motion: reduce){
-    .pre-mark .bar{ animation:none; stroke-dashoffset:60; }
-    .pre-word span{ animation:none; opacity:1; }
-  }
-
   /* ---------- SCROLL PROGRESS ---------- */
   .scroll-progress{
     position:fixed; top:0; left:0; height:2px; width:0%; z-index:300;
@@ -526,7 +491,6 @@
     border-top:1px solid var(--border);
   }
 
-  /* ---------- BACK TO TOP ---------- */
   .to-top{
     position:fixed; right:20px; bottom:20px; z-index:90; width:48px; height:48px;
     border-radius:50%; background:rgba(13,15,19,.85); backdrop-filter:blur(10px);
@@ -559,27 +523,6 @@
 </style>
 </head>
 <body>
-
-  <!-- PRELOADER -->
-  <div id="preloader" aria-hidden="true">
-    <div class="pre-mark">
-      <svg viewBox="0 0 74 74">
-        <defs>
-          <linearGradient id="preGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7C6CF6"/>
-            <stop offset="100%" stop-color="#5ED8D6"/>
-          </linearGradient>
-        </defs>
-        <circle class="track" cx="37" cy="37" r="33"></circle>
-        <circle class="bar" cx="37" cy="37" r="33"></circle>
-      </svg>
-      <span class="grad-text">M</span>
-    </div>
-    <div class="pre-bar-track"><div class="pre-bar-fill" id="preBarFill"></div></div>
-    <div class="pre-word" id="preWord">
-      <span style="animation-delay:0s">C</span><span style="animation-delay:.1s">a</span><span style="animation-delay:.2s">r</span><span style="animation-delay:.3s">r</span><span style="animation-delay:.4s">e</span><span style="animation-delay:.5s">g</span><span style="animation-delay:.6s">a</span><span style="animation-delay:.7s">n</span><span style="animation-delay:.8s">d</span><span style="animation-delay:.9s">o</span>
-    </div>
-  </div>
 
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -631,8 +574,8 @@
           <div class="hero-eyebrow">FULL STACK DEVELOPER · PYTHON · SYSTEMS ENGINEER</div>
           <h1>Miguel Viana<br>Oliveira</h1>
           <div class="hero-role" id="heroRole" aria-live="polite"></div>
-          <div class="hero-meta">15 anos · São Paulo, Brasil</div>
-          <p class="hero-tagline">Desenvolvo software pensando em como sistemas são construídos, não apenas em como aplicações funcionam — unindo arquitetura, back-end e experiência do usuário em produtos completos.</p>
+          <div class="hero-meta">São Paulo, Brasil</div>
+          <p class="hero-tagline">Desenvolvo software pensando em como sistemas são construídos, não apenas em como aplicações funcionam, unindo arquitetura, back-end e experiência do usuário em produtos completos.</p>
           <div class="hero-actions">
             <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
             <a href="https://github.com/miguel010-dev" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
@@ -657,7 +600,6 @@
           <div class="fact-list reveal">
             <div class="fact-item"><div class="label">Localização</div><div class="value">São Paulo, Brasil</div></div>
             <div class="fact-item"><div class="label">Foco</div><div class="value">Python & Arquitetura de Sistemas</div></div>
-            <div class="fact-item"><div class="label">Idade</div><div class="value">15 anos</div></div>
             <div class="fact-item"><div class="label">Status</div><div class="value">Disponível para projetos</div></div>
           </div>
         </div>
@@ -677,7 +619,7 @@
           <div class="skill-card glow-surface tilt reveal" data-level="90"><div class="ic">🧱</div><div class="name">HTML</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
           <div class="skill-card glow-surface tilt reveal" data-level="85"><div class="ic">🎨</div><div class="name">CSS</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
           <div class="skill-card glow-surface tilt reveal" data-level="70"><div class="ic">🌐</div><div class="name">JavaScript</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
-          <div class="skill-card glow-surface tilt reveal" data-level="72"><div class="ic">🗄️</div><div class="name">SQLite</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
+          
           <div class="skill-card glow-surface tilt reveal" data-level="80"><div class="ic">🗂️</div><div class="name">Git</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
           <div class="skill-card glow-surface tilt reveal" data-level="60"><div class="ic">🐧</div><div class="name">Linux</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
           <div class="skill-card glow-surface tilt reveal" data-level="78"><div class="ic">🔗</div><div class="name">APIs REST</div><div class="lvl-track"><div class="lvl-fill"></div></div></div>
@@ -691,7 +633,7 @@
       <div class="wrap">
         <div class="kicker">Trajetória</div>
         <h2 class="section-title reveal">Minha jornada</h2>
-        <p class="section-desc reveal">Cada etapa foi construída sobre a anterior — de primeiras linhas de código até a construção do meu próprio ecossistema.</p>
+        <p class="section-desc reveal">Cada etapa foi construída sobre a anterior, das primeiras linhas de código até a construção do meu próprio ecossistema.</p>
 
         <div class="timeline" id="timeline">
           <div class="t-item"><div class="t-year">2025</div><div class="t-title">Comecei a estudar programação</div></div>
@@ -711,7 +653,7 @@
       <div class="wrap">
         <div class="kicker">Projeto principal</div>
         <h2 class="section-title reveal">Nebula <span class="grad-text">OS</span></h2>
-        <p class="section-desc reveal">Não apenas um sistema operacional: um ecossistema de software desenvolvido para explorar conceitos modernos de computação, interface e desenvolvimento de aplicações — com linguagem própria, loja de aplicativos e documentação completa.</p>
+        <p class="section-desc reveal">Não apenas um sistema operacional: um ecossistema de software desenvolvido para explorar conceitos modernos de computação, interface e desenvolvimento de aplicações, com linguagem própria, loja de aplicativos e documentação completa.</p>
 
         <div class="repo-cta glow-surface reveal">
           <div class="repo-cta-info">
@@ -768,7 +710,7 @@
             <span class="tag-pill">HTML</span>
             <span class="tag-pill">CSS</span>
             <span class="tag-pill">JavaScript</span>
-            <span class="tag-pill">SQLite</span>
+            <span class="tag-pill">PostgreSQL</span>
           </div>
         </div>
 
@@ -791,7 +733,7 @@
       <div class="wrap">
         <div class="kicker">Trabalhos</div>
         <h2 class="section-title reveal">Projetos</h2>
-        <p class="section-desc reveal">Uma seleção do que venho construindo — do ecossistema Nebula OS a APIs, interfaces e automações.</p>
+        <p class="section-desc reveal">Uma seleção do que venho construindo, do ecossistema Nebula OS a APIs, interfaces e automações.</p>
         <div class="projects-grid">
 
           <div class="project-card glow-surface tilt reveal">
@@ -805,7 +747,7 @@
               <span>Python</span>
               <span>Flask</span>
               <span>JavaScript</span>
-              <span>SQLite</span>
+              <span>PostgreSQL</span>
             </div>
             <div class="links">
               <a href="#nebula">Saiba mais</a>
@@ -984,7 +926,7 @@
         <div class="kicker">Como penso</div>
         <h2 class="section-title reveal">Minha filosofia</h2>
         <p class="philosophy-quote reveal">Acredito que um bom software deve ser simples para quem usa e organizado para quem desenvolve.</p>
-        <p class="section-desc reveal">Não gosto apenas de escrever código — gosto de entender como um software funciona como produto. Por isso meus projetos normalmente envolvem:</p>
+        <p class="section-desc reveal">Não gosto apenas de escrever código: gosto de entender como um software funciona como produto. Por isso meus projetos normalmente envolvem:</p>
         <div class="philosophy-tags reveal">
           <span>Arquitetura</span>
           <span>Interface</span>
@@ -1050,7 +992,7 @@
 
   </main>
 
-  <footer>Miguel Viana Oliveira — © 2026</footer>
+  <footer>Miguel Viana Oliveira © 2026</footer>
 
   <button class="to-top" id="toTop" aria-label="Voltar ao topo">
     <svg width="48" height="48" viewBox="0 0 48 48">
@@ -1073,47 +1015,6 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasHover = window.matchMedia('(hover: hover)').matches;
-
-  /* ---------- PRELOADER ---------- */
-  (function initPreloader(){
-    const pre = document.getElementById('preloader');
-    const fill = document.getElementById('preBarFill');
-    document.documentElement.classList.add('lock');
-    document.body.classList.add('lock');
-
-    let progress = 0;
-    let loaded = false;
-    const minTime = 900; // tempo mínimo para não "piscar" em conexões rápidas
-    const startTime = Date.now();
-
-    const timer = setInterval(()=>{
-      // avança suave, desacelerando perto de 90% até o load real terminar
-      const target = loaded ? 100 : 90;
-      progress += (target - progress) * 0.12 + 0.4;
-      if(progress > target) progress = target;
-      fill.style.width = progress.toFixed(1) + '%';
-      if(loaded && progress >= 99.5){
-        clearInterval(timer);
-        finish();
-      }
-    }, 60);
-
-    function finish(){
-      const elapsed = Date.now() - startTime;
-      const wait = Math.max(0, minTime - elapsed);
-      setTimeout(()=>{
-        fill.style.width = '100%';
-        pre.classList.add('hidden');
-        document.documentElement.classList.remove('lock');
-        document.body.classList.remove('lock');
-        setTimeout(()=> pre.remove(), 700);
-      }, wait);
-    }
-
-    window.addEventListener('load', ()=>{ loaded = true; });
-    // fallback de segurança: nunca deixa o usuário preso na tela de loading
-    setTimeout(()=>{ loaded = true; }, 4000);
-  })();
 
   /* ---------- Estrelas ambiente (geradas uma vez, leve) ---------- */
   (function initStars(){
@@ -1211,8 +1112,6 @@
       timelineEl.style.setProperty('--fill', h + 'px');
     }
 
-    // Garante que o último link fique ativo quando o usuário chega ao fim da página
-    // (o IntersectionObserver abaixo pode falhar quando a última seção é curta)
     if(max > 0 && pct > 0.985){
       navAnchors.forEach(a => a.classList.remove('active'));
       const last = navAnchors[navAnchors.length - 1];
